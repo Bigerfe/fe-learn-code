@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>基础-上传文件</title>
+</head>
+<body>
+    <h1>最原始的上传文件操作 - 多文件上传</h1>
+    <h2>使用 form 表单直接请求,不用 js</h2>
+    <div>
+        <form method="post" action="http://localhost:8100" enctype="multipart/form-data">
+
+        选择文件(可多选):
+            <input type="file" name="f1" multiple/><br/> input 必须设置 name 属性，否则数据无法发送<br/>
+<br/>
+            标题：<input type="text" name="title"/><br/><br/><br/>
+
+        <button type="submit" id="btn-0">上 传</button>
+
+        </form>
+    </div>
+
+</body>
+</html>

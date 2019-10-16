@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拖拽上传文件</title>
+    <style type="text/css">
+    .drop-box{
+        height:200px;
+        width: 400px;
+        background-color: #ccc;
+        margin-bottom: 30px;
+    }
+    .over{
+        background-color: green;
+    }
+    </style>
+</head>
+<body>
+    <h1>多文件上传  之 拖拽上传  xhr formdata</h1>
+    <div class="drop-box" id="drop-box">
+       拖动文件到这里,开始上传
+    </div>
+    
+    <button type="button" id="btn-submit">上 传</button>
+
+</body>
+</html>
+<script>
+
+    var box = document.getElementById('drop-box');
+
+    document.addEventListener('drop',function (e) {
+        console.log('document drog');
+        e.preventDefault();
+    });
+    //禁用浏览器的拖放默认行为
+    //    document.addEventListener('dragenter', function (e) {
+    //         console.log('document dragenter');
+    //         box.classList.add('over');
+    //         e.preventDefault();
+    //     });
+    //     document.addEventListener('dragover', function (e) {
+    //             console.log('document dragover');
+    //             e.preventDefault();
+    //     });
+    //     document.addEventListener('dragleave', function (e) {
+    //                 box.classList.remove('over');
+    //                 e.preventDefault();
+    //     });
+   
+    //设置拖拽事件
+    function openDropEvent() {
+    
+        box.addEventListener("dragover",function (e) {
+            console.log('elemenet dragover');
+             box.classList.add('over');
+               e.preventDefault();
+        });
+         box.addEventListener("dragleave", function (e) {
+              console.log('elemenet dragleave');
+            box.classList.remove('over');
+              e.preventDefault();
+        });
+
+        box.addEventListener("drop", function (e) {
+            e.preventDefault(); //取消浏览器默认拖拽效果
+            console.log(e);
+
+            var fileList = e.dataTransfer.files; //获取拖拽中的文件对象
+            var len = fileList.length;//用来获取文件的长度（其实是获得文件数量）
+
+            console.log('fielist is array?', Array.isArray(fileList));
+
+            //检测是否是拖拽文件到页面的操作
+            if (!len) {
+                box.classList.remove('over');
+                return;
+            }
+
+            box.classList.add('over');
+
+            //检测文件类型，比如必须的图片 这里可以做操作
+            
+            // for(var i =0;i<len;i++){
+            //     fileList[i].type==='image/jpeg'//是否是图片文件
+            // }
+            //end
+                
+            window.willUploadFileList=fileList;
+
+            console.log(fileList);
+
+        }, false);
+    }
+
+
+    openDropEvent();
+
+    function submitUpload() {
+
+        var fileList = window.willUploadFileList||[];
+
+        if(!fileList.length){
+            alert('请选择文件');
+            return;
+        }
+
+        var fd = new FormData();   //构造FormData对象
+
+        for(var i =0;i<fileList.length;i++){
+            fd.append('f1', fileList[i]);//支持多文件上传
+        }
+
+        var xhr = new XMLHttpRequest();   //创建对象
+        xhr.open('POST', 'http://localhost:8100/', true);
+
+        xhr.onreadystatechange = function () {
+            console.log('state change', xhr.readyState);
+            if (xhr.readyState == 4) {
+                var obj = JSON.parse(xhr.responseText);   //返回值
+                console.log(obj);
+                if(obj.fileUrl.length){
+                    alert('上传成功');
+                }
+            }
+        }
+
+        //注意 send 一定要写在最下面，否则 onprogress 只会执行最后一次 也就是100%的时候
+        xhr.send(fd);//发送时  Content-Type默认就是: multipart/form-data; 
+    }
+    //绑定提交事件
+    document.getElementById('btn-submit').addEventListener('click',submitUpload);
+
+
+</script>

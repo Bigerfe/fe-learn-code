@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>图片上传前的一些判断</title>
+    <style type="text/css">
+    .imgs img{
+       width: 100px;
+       display: inline-block;
+    }
+    
+    </style>
+</head>
+<body>
+    <h1>图片上传前的一些判断</h1>
+    <h3>
+         1. 判断文件类型 如：必须为 jpg 图片  <br/>  2.判断文件大小 size 如：不能>100kb <br/>  3. 判断图片尺寸  如：不能 >100*90
+    </h3>
+    <div>
+        
+        选择文件(可多选):
+            <input type="file" id="f1" multiple accept="image/gif,image/jpeg,image/jpg,image/png"/><br/><br/>
+
+
+        <button type="button" id="btn-submit">上 传</button>
+
+    </div>
+</body>
+</html>
+<script>
+    //使用动态创建 img 对象获取图片的尺寸 可以使用 naturalWidth(h5) 或者 width 来获取原始大小
+
+    function submitUpload() {
+
+        var fileList = document.getElementById('f1').files;
+        if(!fileList.length){
+            alert('请选择文件');
+            return;
+        }
+
+        var fd = new FormData();   //构造FormData对象
+        var flag=true;
+        for(var i =0;i<fileList.length;i++){
+            var f = fileList[i];
+            console.log('文件mime 类型:',f.type);
+              console.log('文件大小 size:', f.size);
+
+            // if(f.type!=='image/jpeg' &&  f.type !== 'image/jpg'  ){
+            //     alert('只能上传 jpg 图片');
+            //     flag=false;
+            //     break;
+            // }
+            // if(f.size>100*1024){
+            //       alert('不能大于100kb');
+            //     flag = false;
+            //     break;
+            // }
+
+            //判断图片尺寸
+            var img =new Image();
+            img.onload=function(){
+                 console.log('图片原始大小 width*height', this.width, this.height);
+                if(this.naturalWidth){
+                console.log('图片原始大小 naturalWidth*naturalHeight', this.naturalWidth, this.naturalHeight);
+                }else{
+                  console.log('oImg.width*height', this.width, this.height);
+
+                }
+                window.URL.revokeObjectURL(this.src);
+            }
+            
+            img.src = window.URL.createObjectURL(f);
+
+
+            fd.append('f1', fileList[i]);//支持多文件上传
+        }
+
+        flag && fetch('http://localhost:8100/', {
+            method: 'POST',
+            body: fd
+        })
+            .then(response => response.json())
+            .then(response =>{
+                console.log(response);
+                if (response.fileUrl.length) {
+                    alert('上传成功');
+                }
+            } )
+            .catch(error => console.error('Error:', error));
+    }
+    //绑定提交事件
+    document.getElementById('btn-submit').addEventListener('click',submitUpload);
+
+</script>

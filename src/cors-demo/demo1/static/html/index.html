@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>基础-上传文件</title>
+</head>
+<body>
+   
+    <h2>跨域问题复现和解决</h2>
+    <h3>使用 get 或者 post 发送数据, content-type:application/x-www-form-urlencoded </h3>
+
+    <h4>要发送的数据 a=1&b=2</h4>
+
+
+    <button type="button" id="btn">发送数据</button>
+
+</body>
+</html>
+
+<script>
+
+function xhrSend() {
+    
+    var xhr = new XMLHttpRequest();   //创建对象
+    xhr.open('POST', 'http://192.168.0.105:8100/getdata', true);
+    xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+
+    xhr.send('a=1&b=2');//发送数据 
+    xhr.onreadystatechange = function () {
+        console.log('state change', xhr.readyState);
+        if (xhr.readyState == 4) {
+            console.log(xhr.responseText);
+        }
+    }
+}
+
+
+document.getElementById('btn').addEventListener('click',function (e) {
+        xhrSend();
+});
+
+
+</script>

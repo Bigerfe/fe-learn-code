@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>基础-上传文件</title>
+    <style type="text/css">
+    #progress{
+        height:20px;
+        width: 300px;
+        margin-bottom: 30px;
+    }
+    #progress span{
+        display: block;
+        height:20px;
+        width:0;
+        color: #fff;
+        font-size: 12px;
+    }
+
+    .red{
+        background-color: red;
+    }
+
+    .green{
+        background-color: green;
+    }
+    </style>
+</head>
+<body>
+    <h1>多文件上传  之 xhr formdata 上传进度条 progress</h1>
+    <div>
+
+        选择文件(可多选):
+            <input type="file" id="f1" multiple/><br/><br/>
+
+            <div id="progress">
+                <span class="red"></span>
+            </div>
+
+        <button type="button" id="btn-submit">上 传</button>
+
+    </div>
+</body>
+</html>
+<script>
+
+    function submitUpload() {
+        var progressSpan = document.getElementById('progress').firstElementChild;
+        var fileList = document.getElementById('f1').files;
+        progressSpan.style.width='0';
+        progressSpan.classList.remove('green');
+
+        if(!fileList.length){
+            alert('请选择文件');
+            return;
+        }
+
+        var fd = new FormData();   //构造FormData对象
+        fd.append('title', document.getElementById('title').value);
+
+        for(var i =0;i<fileList.length;i++){
+            fd.append('f1', fileList[i]);//支持多文件上传
+        }
+
+        var xhr = new XMLHttpRequest();   //创建对象
+        xhr.open('POST', 'http://10.70.65.235:8100/', true);
+
+        xhr.onreadystatechange = function () {
+            console.log('state change', xhr.readyState);
+            if (xhr.readyState == 4) {
+                var obj = JSON.parse(xhr.responseText);   //返回值
+                console.log(obj);
+                if(obj.fileUrl.length){
+                    //alert('上传成功');
+                }
+            }
+        }
+
+        xhr.onprogress=updateProgress;
+        xhr.upload.onprogress = updateProgress;
+        function updateProgress(event) {
+            console.log(event);
+            if (event.lengthComputable) {
+                var completedPercent = (event.loaded / event.total * 100).toFixed(2);
+                progressSpan.style.width= completedPercent+'%';
+                progressSpan.innerHTML=completedPercent+'%';
+                if(completedPercent>90){//进度条变色
+                    progressSpan.classList.add('green');
+                }
+                console.log('已上传',completedPercent);
+            }
+        }
+        //注意 send 一定要写在最下面，否则 onprogress 只会执行最后一次 也就是100%的时候
+        xhr.send(fd);//发送时  Content-Type默认就是: multipart/form-data; 
+    }
+    //绑定提交事件
+    document.getElementById('btn-submit').addEventListener('click',submitUpload);
+
+
+</script>

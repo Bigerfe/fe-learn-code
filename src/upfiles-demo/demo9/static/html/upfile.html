@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>基础-上传文件</title>
+    <style type="text/css">
+    .imgs img{
+       width: 100px;
+       display: inline-block;
+    }
+    </style>
+</head>
+<body>
+    <h1>多文件上传  之 本地图片预览</h1>
+    <h3>注意：window.URL.createObjectURL或者FileReader  兼容 ie10+ </h3>
+    <div>
+
+        选择文件(可多选):
+            <input type="file" id="f1" multiple accept="image/gif,image/jpeg,image/jpg,image/png"/><br/><br/>
+
+            标题：<input type="text" id="title"/><br/><br/><br/>
+
+        <div class="imgs">
+
+        </div>
+
+        <button type="button" id="btn-submit">上 传</button>
+
+        </form>
+    </div>
+</body>
+</html>
+<script>
+
+    //绑定事件
+    document.getElementById('f1').addEventListener('change',function (e) {
+        var files = document.getElementById('f1').files;
+        var imgsBox = document.getElementsByClassName('imgs')[0];
+        if(!files.length){
+           return; 
+        }
+
+        for(var i=0;i<files.length;i++){
+            var file = files[i];
+            var img = document.createElement('img');
+
+            //第一种：使用window.URL.createObjectURL
+            // img.src= window.URL.createObjectURL(file);
+            // img.onload = function () {
+            //     //显示要是否这块儿内存
+            //     window.URL.revokeObjectURL(this.src);
+            // }
+            //end 第一种
+            
+
+            //第二种:使用FileReader
+            var reader = new FileReader();
+            reader.onload = (function (aImg) { return function (e) { aImg.src = e.target.result; }; })(img);
+            reader.readAsDataURL(file);
+            //end 第二种
+
+              imgsBox.appendChild(img);
+           
+        }
+    });
+
+    function submitUpload() {
+
+        var fileList = document.getElementById('f1').files;
+        if(!fileList.length){
+            alert('请选择文件');
+            return;
+        }
+
+        var fd = new FormData();   //构造FormData对象
+        fd.append('title', document.getElementById('title').value);
+        for(var i =0;i<fileList.length;i++){
+            fd.append('f1', fileList[i]);//支持多文件上传
+        }
+
+        fetch('http://localhost:8100/', {
+            method: 'POST',
+            body: fd
+        })
+            .then(response => response.json())
+            .then(response =>{
+                console.log(response);
+                if (response.fileUrl.length) {
+                    alert('上传成功');
+                }
+            } )
+            .catch(error => console.error('Error:', error));
+    }
+    //绑定提交事件
+    document.getElementById('btn-submit').addEventListener('click',submitUpload);
+
+</script>

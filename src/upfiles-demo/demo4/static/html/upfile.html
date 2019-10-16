@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>基础-上传文件</title>
+</head>
+<body>
+    <h1>多文件上传  之 xhr formdata</h1>
+    <div>
+        选择文件(可多选):
+        <input type="file" id="f1" multiple/><br/><br/>
+        <button type="button" id="btn-submit">上 传</button>
+    </div>
+</body>
+</html>
+<script>
+    function submitUpload() {
+        //获得文件列表，注意这里不是数组，而是对象
+        var fileList = document.getElementById('f1').files;
+        if(!fileList.length){
+            alert('请选择文件');
+            return;
+        }
+        var fd = new FormData();   //构造FormData对象
+        fd.append('title', document.getElementById('title').value);
+
+        //多文件上传需要遍历添加到 fromdata 对象
+        for(var i =0;i<fileList.length;i++){
+            fd.append('f1', fileList[i]);//支持多文件上传
+        }
+
+        var xhr = new XMLHttpRequest();   //创建对象
+        xhr.open('POST', 'http://localhost:8100/', true);
+
+        xhr.send(fd);//发送时  Content-Type默认就是: multipart/form-data; 
+        xhr.onreadystatechange = function () {
+            console.log('state change', xhr.readyState);
+            if (this.readyState == 4 && this.status == 200) {
+                var obj = JSON.parse(xhr.responseText);   //返回值
+                console.log(obj);
+                if(obj.fileUrl.length){
+                    alert('上传成功');
+                }
+            }
+        }
+
+    }
+
+    //绑定提交事件
+    document.getElementById('btn-submit').addEventListener('click',submitUpload);
+</script>

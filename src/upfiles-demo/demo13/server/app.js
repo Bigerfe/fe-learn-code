@@ -55,7 +55,7 @@ app.use((ctx) => {
     }
 
     files && files.forEach(item=>{
-        var path = item.path;
+        var path = item.path.replace(/\\/g, '/');
         var fname = item.name;//原文件名称
         var nextPath = path.slice(0, path.lastIndexOf('/') + 1) + fileIndex + '-' + fileToken;
         if (item.size > 0 && path) {

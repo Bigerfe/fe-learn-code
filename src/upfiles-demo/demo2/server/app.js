@@ -28,11 +28,14 @@ app.use(koaStatic(
 
 //二次处理文件，修改名称
 app.use((ctx) => {
+    console.log(ctx.request.files);
     var files = ctx.request.files.f1;//得到上传文件的数组
     var result=[];
-
+    if(!Array.isArray(files)){
+        files=[files];
+    }
     files && files.forEach(item=>{
-        var path = item.path;
+        var path = item.path.replace(/\\/g, '/');
         var fname = item.name;//原文件名称
         var nextPath = path + fname;
         if (item.size > 0 && path) {

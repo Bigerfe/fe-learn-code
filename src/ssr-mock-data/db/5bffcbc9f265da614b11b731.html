@@ -1,0 +1,126 @@
+<h2 class="heading" data-id="heading-0">小册介绍</h2>
+<p><code>MySQL</code>凭借着它还不错的性能、还不错的稳定性常年稳居老二宝座，当然最大的优势就是它不要钱，还开源，这让它成为大部分中小型公司，尤其是互联网公司首选的数据库（近年来越来越多的大公司也在尝试将业务转移到这种不要钱的数据库上来）。</p>
+<p>越来越多的<code>DBA</code>和后端同学在工作中少不了和<code>MySQL</code>打交道，为什么这个SQL执行的这么慢？为什么明明我建了索引但查询计划显示没用？为什么我的<code>IN</code>查询里的参数一多就不使用索引了？为什么突然我的数据就成了乱码？到底应不应该使用连接查询？吧啦吧啦一大堆。在面试中<code>MySQL</code>的一些知识更成为躲不过的问题，比如索引结构、<code>MVCC</code>、隔离级别的实现、锁的使用等等等等都成为了面试考题重灾区。</p>
+<p>其实对于工程技术人员来说，大部分接触的所谓<code>技术</code>是没那么需要智商的，只是需要讲解这些技术的同学稍微切换一个角度，切换到小白的角度而不是站在一个上帝视角去讲述问题，那些看起来非常<code>高深复杂</code>的问题其实都是为了一个非常简单的初衷而不得不采用的设计。我的任务就是带着大家从非常简单的问题出发，在解决问题的路上我们会遇到一些麻烦，由这些麻烦我们会很自然的引入一些新的概念，我会不断的向大家强化这些新概念，当我确保大家已经完全掌握了这些新概念后，会基于这些新概念再引入一些更为复杂的问题。高楼大厦虽然雄伟，解构之后不过是钢筋水泥。当然这个过程我会适当的给大家加点儿料，扯扯犊子，让大家像读小说一样接受这些MySQL的核心概念。</p>
+<h3 class="heading" data-id="heading-1">小册的套路</h3>
+<p>我们相信，<span style="color:red">只要向大家有节奏的展示足够多的技术细节，那么整个学习过程将会变得流畅平滑，MySQL的面纱也会慢慢的被摘下</span>。所以我们在后续介绍MySQL运行过程中需要用到的各种结构时会尽力向大家解释清楚每个字节都是干嘛用的，某几部分组合起来会有什么样的效果等等。</p>
+<p>对于一些比较复杂的概念时，我们不准备使用概念先行方式进行讲解，也就是先给大家提出一个概念，然后介绍这个概念有什么什么属性，每个属性又有什么什么特点，每个特点又有什么什么的用法。我们在解释比较复杂的问题时会按照下边的套路出发：</p>
+<ul>
+<li>
+<p>我们遇到了什么问题</p>
+</li>
+<li>
+<p>为了解决问题提出了什么概念</p>
+</li>
+<li>
+<p>这个概念在MySQL中又有哪些需要注意的地方。</p>
+</li>
+</ul>
+<p>也就是：<span style="color:red">不先讲是什么，先讲为什么</span>。</p>
+<h3 class="heading" data-id="heading-2">覆盖的内容</h3>
+<p>本小册致力于覆盖大家工作和面试过程中最常遇到的MySQL的一些核心概念，共划分为4个部分，各部分简介如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">部分</th>
+<th style="text-align:center">简介</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">第一部分</td>
+<td style="text-align:center">入门</td>
+<td style="text-align:left">以只会写增删改查语句的小白身份重新审视一下<code>MySQL</code>到底是个什么东东，介绍<code>MySQL</code>的服务器程序和客户端程序有哪些、启动选项和系统变量以及字符集的一些事情。</td>
+</tr>
+<tr>
+<td style="text-align:center">第二部分</td>
+<td style="text-align:center">基础结构相关</td>
+<td style="text-align:left">唠叨记录、页面、索引、表空间的结构和用法，是全篇的基础，后边的章节都依赖于这些结构。</td>
+</tr>
+<tr>
+<td style="text-align:center">第三部分</td>
+<td style="text-align:center">查询优化相关</td>
+<td style="text-align:left">介绍同学们工作中经常遇到的查询优化问题，介绍单表查询是如何执行的、连接查询是怎么执行的、<code>MySQL</code>基于成本和规则的优化是个什么东西，以及十分详细的介绍一下如何查看Explain语句的执行结果。</td>
+</tr>
+<tr>
+<td style="text-align:center">第四部分</td>
+<td style="text-align:center">事务和锁相关</td>
+<td style="text-align:left">介绍为什么会有事务的概念，以及<code>MySQL</code>是如何实现事务的，包括redo日志、undo日志、MVCC、各种锁的细节等～</td>
+</tr>
+</tbody>
+</table>
+<h3 class="heading" data-id="heading-3">全是图</h3>
+<p>有时候使用语言表述一个东西太抽象，一图胜千言，所以我们在各种可能让大家迷糊的地方画了各种对应的图示，整个小册用到的图片有上百张之多（其实我背地里画了 200 多张图片），象征性的贴几张：</p>
+<ul>
+<li>
+<p>Compact行格式示意图：</p>
+<p></p><figure><img class="lazyload inited" data-src="https://user-gold-cdn.xitu.io/2018/12/2/1676d29ddee882c7?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="783" data-height="250" src="data:image/svg+xml;utf8,&lt;?xml version=&quot;1.0&quot;?&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; width=&quot;783&quot; height=&quot;250&quot;&gt;&lt;/svg&gt;"><figcaption></figcaption></figure><p></p>
+</li>
+<li>
+<p>InnoDB数据页结构示意图：</p>
+<p></p><figure><img class="lazyload inited" data-src="https://user-gold-cdn.xitu.io/2018/12/2/1676d2b6cb10b8a4?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="493" data-height="494" src="data:image/svg+xml;utf8,&lt;?xml version=&quot;1.0&quot;?&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; width=&quot;493&quot; height=&quot;494&quot;&gt;&lt;/svg&gt;"><figcaption></figcaption></figure><p></p>
+</li>
+<li>
+<p>B+树索引结构示意图：</p>
+<p></p><figure><img class="lazyload inited" data-src="https://user-gold-cdn.xitu.io/2018/12/2/1676d6ca9eed4794?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="1080" data-height="579" src="data:image/svg+xml;utf8,&lt;?xml version=&quot;1.0&quot;?&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; width=&quot;1080&quot; height=&quot;579&quot;&gt;&lt;/svg&gt;"><figcaption></figcaption></figure><p></p>
+</li>
+<li>
+<p>表空间结构示意图：</p>
+<p></p><figure><img alt="image_1d47f9kdl1rjmeg21ejm1e8m19ep.png-105.3kB" class="lazyload inited" data-src="https://user-gold-cdn.xitu.io/2019/2/21/1690efa19dae13de?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="793" data-height="632" src="data:image/svg+xml;utf8,&lt;?xml version=&quot;1.0&quot;?&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; width=&quot;793&quot; height=&quot;632&quot;&gt;&lt;/svg&gt;"><figcaption></figcaption></figure><p></p>
+</li>
+<li>
+<p>单表查询中根据二级索引访问的示意图：</p>
+<p></p><figure><img alt="image_1d47fb5fh656nmg1qkl1qk8vb616.png-131.5kB" class="lazyload inited" data-src="https://user-gold-cdn.xitu.io/2019/2/21/1690efa19de36b36?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="845" data-height="621" src="data:image/svg+xml;utf8,&lt;?xml version=&quot;1.0&quot;?&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; width=&quot;845&quot; height=&quot;621&quot;&gt;&lt;/svg&gt;"><figcaption></figcaption></figure><p></p>
+</li>
+<li>
+<p><code>Buffer Pool</code>的<code>free</code>链表示意图：</p>
+<p></p><figure><img alt="image_1d47fgsite68eeikur1ug13vd1j.png-229.5kB" class="lazyload inited" data-src="https://user-gold-cdn.xitu.io/2019/2/21/1690efa19e335ffd?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="1010" data-height="606" src="data:image/svg+xml;utf8,&lt;?xml version=&quot;1.0&quot;?&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; width=&quot;1010&quot; height=&quot;606&quot;&gt;&lt;/svg&gt;"><figcaption></figcaption></figure><p></p>
+</li>
+<li>
+<p>。。。。。</p>
+</li>
+</ul>
+<h3 class="heading" data-id="heading-4">另外</h3>
+<p>当然，<code>MySQL</code>是一个很大的主题，我这里只能尽量用通俗的语言让大家理解许多重要的概念或者模型，要是事无巨细的都写出来应该能写好几千页，Baron Schwartz之前写了个关于<code>InnoDB</code>存储引擎的一个提纲：<a target="_blank" href="https://www.xaprb.com/blog/2015/08/08/innodb-book-outline/" rel="nofollow noopener noreferrer">An Outline for a Book on InnoDB</a>，他列了提纲之后貌似就再没写书的动静了，可能是内容太多了吧，这本书一直没见着问世，不过大家可以通过这个提纲一窥全貌。</p>
+<h2 class="heading" data-id="heading-5">作者介绍</h2>
+<p></p><figure><img class="lazyload inited" data-src="https://user-gold-cdn.xitu.io/2019/4/26/16a5794214a29e80?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="1280" data-height="371" src="data:image/svg+xml;utf8,&lt;?xml version=&quot;1.0&quot;?&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; width=&quot;1280&quot; height=&quot;371&quot;&gt;&lt;/svg&gt;"><figcaption></figcaption></figure><p></p>
+<p>小孩子：前在线教育公司「跟谁学」后端工程师，公众号「我们都是小青蛙」作者，喜欢研究源码，觉得把复杂的问题讲清楚是一件很牛逼的事儿。</p>
+<h2 class="heading" data-id="heading-6">你会学到什么？</h2>
+<ul>
+<li>MySQL 的一些基本概念；</li>
+<li>如何处理使用 MySQL 过程中的乱码问题；</li>
+<li>从根儿上理解 InnoDB 存储引擎是如何存储记录、数据页，以及由页作为节点组成的B+树索引的原理；</li>
+<li>理解 InnoDB 存储引擎的表空间概念，知道 InnoDB 是如何管理段、区、页这些玩意儿以及 InnoDB 的数据字典；</li>
+<li>理解 MySQL 是如何执行单表查询、如何执行连接查询；</li>
+<li>理解 MySQL 基于代价的优化和基于规则的优化到底是啥意思；</li>
+<li>知道如何查看自己写的查询语句是好是坏，学会使用optimizer tracer；</li>
+<li>理解为什么需要事务以及它的基本概念；</li>
+<li>redo 和 undo 日志的作用以及在 MySQL 中这些日志的细节；</li>
+<li>理解并发带来的各种问题以及 MySQL 中使用锁的各种细节；</li>
+<li>理解学习的快乐，希望各位看完本小册就像是读完一本小说一样畅快淋漓。</li>
+</ul>
+<h2 class="heading" data-id="heading-7">适宜人群</h2>
+<ul>
+<li>刚刚学完 SQL 基础的学生同学们；</li>
+<li>被数据库问题折磨的求职者们；</li>
+<li>天天被 DBA 逼着优化 SQL 的业务开发小伙伴；</li>
+<li>菜鸟 DBA 和不是非常菜的 DBA 小伙伴；</li>
+<li>对 MySQL 内核有强烈兴趣但看源码一脸懵逼的小伙伴。</li>
+</ul>
+<h2 class="heading" data-id="heading-8">名人推荐</h2>
+<p></p><figure><img class="lazyload inited" data-src="https://user-gold-cdn.xitu.io/2019/4/26/16a5793726c6c674?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="1280" data-height="917" src="data:image/svg+xml;utf8,&lt;?xml version=&quot;1.0&quot;?&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; width=&quot;1280&quot; height=&quot;917&quot;&gt;&lt;/svg&gt;"><figcaption></figcaption></figure><p></p>
+<p></p><figure><img class="lazyload inited" data-src="https://user-gold-cdn.xitu.io/2019/4/26/16a5793a7171b2fe?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="1280" data-height="561" src="data:image/svg+xml;utf8,&lt;?xml version=&quot;1.0&quot;?&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; width=&quot;1280&quot; height=&quot;561&quot;&gt;&lt;/svg&gt;"><figcaption></figcaption></figure><p></p>
+<p></p><figure><img class="lazyload inited" data-src="https://user-gold-cdn.xitu.io/2019/4/26/16a5793ba8ab8c10?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="1280" data-height="561" src="data:image/svg+xml;utf8,&lt;?xml version=&quot;1.0&quot;?&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; width=&quot;1280&quot; height=&quot;561&quot;&gt;&lt;/svg&gt;"><figcaption></figcaption></figure><p></p>
+<p></p><figure><img class="lazyload inited" data-src="https://user-gold-cdn.xitu.io/2019/4/26/16a5793e119a1cdc?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="1280" data-height="561" src="data:image/svg+xml;utf8,&lt;?xml version=&quot;1.0&quot;?&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; width=&quot;1280&quot; height=&quot;561&quot;&gt;&lt;/svg&gt;"><figcaption></figcaption></figure><p></p>
+<h2 class="heading" data-id="heading-9">购买须知</h2>
+<ul>
+<li>本小册为图文形式内容服务，共计 25 节；</li>
+<li>全部文章预计 5 月 20 日更新完成；</li>
+<li>购买用户可享有小册永久的阅读权限；</li>
+<li>购买用户可使用 掘金 Web 端、掘金App 进行阅读；</li>
+<li>购买用户可进入小册微信群，与作者互动；</li>
+<li>掘金小册为虚拟内容服务，一经购买成功概不退款；</li>
+<li>掘金小册版权归北京北比信息技术有限公司所有，任何机构、媒体、网站或个人未经本网协议授权不得转载、链接、转贴或- 以其他方式复制发布/发表，违者将依法追究责任；</li>
+<li>在掘金小册阅读过程中，如有任何问题，请邮件联系 xiaoce@xitu.io</li>
+</ul>

@@ -1,0 +1,76 @@
+<h2 class="heading" data-id="heading-0">内容简介</h2>
+<p></p><figure><img class="lazyload inited" data-src="https://user-gold-cdn.xitu.io/2017/11/20/15fd6b2d6147fc39?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="1280" data-height="512" src="data:image/svg+xml;utf8,&lt;?xml version=&quot;1.0&quot;?&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; width=&quot;1280&quot; height=&quot;512&quot;&gt;&lt;/svg&gt;"><figcaption></figcaption></figure><p></p>
+<p>互联网大潮和前端社区的蓬勃发展让现代前端项目的复杂性比 5 年前翻了好多倍，前端工作流中也出现了越来越多工程化的环节，比如代码风格检查、自动化测试、自动化构建、自动化部署、服务监控、依赖管理等。</p>
+<p>大多数前端工程师的工作流可能都离不开 gulp、grunt、webpack 这样的重量级<strong>构建工具</strong>，而是否能熟练运用这些工具将重复任务自动化也是工程师素质的重要体现，我本人也是这些自动化工具的忠实粉丝，因为它们确实能帮我解决问题。但几番折腾之后，你可能已经像我一样感受到明显的痛点：比如对插件依赖严重（开发者的自由度受限），插件和底层工具文档脱节，调试变的更复杂等。</p>
+<p>相比而言，直接使用 npm 内置的 script 机制已经被无数开发者证明是更好的选择，它能减轻甚至消除上面的痛点：你可以直接使用海量的 npm 包来完成你的任务、不需要在插件文档和基础工具文档间来回切换，最重要的点，不使用 grunt 之类的构建工具能让你的技术栈相对更简单，而我在做技术选择是遵循的基本原则是简单化，简单才有可能容易让别人上手。</p>
+<p>可能有同学会反问，<strong><code>Talk is cheap, show me the data</code></strong>，下面这张图（出自<a target="_blank" href="https://medium.freecodecamp.org/why-i-left-gulp-and-grunt-for-npm-scripts-3d6853dd22b8" rel="nofollow noopener noreferrer">这里</a>）是最好的证明：</p>
+<p></p><figure><img class="lazyload inited" data-src="https://user-gold-cdn.xitu.io/2017/11/21/15fdbd336a82c58d?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="474" data-height="253" src="data:image/svg+xml;utf8,&lt;?xml version=&quot;1.0&quot;?&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; width=&quot;474&quot; height=&quot;253&quot;&gt;&lt;/svg&gt;"><figcaption></figcaption></figure><p></p>
+<p><strong><code>更精确的数据是：截止 2017年11月，grunt 插件 6309 个，gulp 插件 3367 个，webpack 插件数量 2174 个，而 npm 包多达 594438 个，并且还在飞速增长</code></strong>。</p>
+<p>那 npm script 为什么没有没有在构建工具中成为主流呢？可能大多数人觉得使用 npm script 需要很强的命令行功底、或者它不够强大、或者它不能跨平台。可以很负责任的说，社区发展到现在，上面的担心都是多余的。</p>
+<p><strong>这也是这本小册的切入点，我在这本小册中会用 <code>step-by-step 的方式</code>讲解如何使用 npm script 打造轻量级但完整的前端工作流。即使你是命令行小白，也能轻松跟上，小册会以实际前端项目为底板逐步介绍更高阶的话题。学完这本小册，你将熟知使用 npm script 打造前端工作流要用的各种小工具和技巧。</strong></p>
+<p>小册的内容划分为 4 篇：</p>
+<ul>
+<li>入门篇：创建和运行 npm script，熟悉和理解基本套路，分 3 小节；</li>
+<li>进阶篇：原来 npm script 还可以这样用？分 3 小节；</li>
+<li>高阶篇：如何管理复杂的 npm script？分 3 小节；</li>
+<li>实战篇：如何用 npm script 来辅助前端工作流？分 5 小节；</li>
+</ul>
+<p>此外，<strong>为了方便读者上手实践，我还为每个小节录制的视频教程</strong>，想了解我短视频教程风格和质量的同学可以看我<a target="_blank" href="https://juejin.im/user/57a7f634d342d300576b738d" rel="">专栏</a>的历史文章：<a target="_blank" href="https://juejin.im/post/5a04f36d6fb9a045293636e0" rel="">styled-components</a>、<a target="_blank" href="https://juejin.im/post/59f7c12b5188255a6a0d5497" rel="">async/await</a>。</p>
+<p>说句题外话，我的 zsh 命令行历史中 npm 已经是仅次于 git 调用次数的命令了。</p>
+<h2 class="heading" data-id="heading-1">适合什么群体？</h2>
+<ul>
+<li>拥抱 <code>无情的推动自动化</code> 开发理念的工程师，不限前端；</li>
+<li>感受到 grunt、gulp 之类工具的笨重和不便，想要更轻量级的解决方案；</li>
+<li>想玩转 npm script，不断打磨自己硬技能，提高日常工作效率的同学；</li>
+</ul>
+<h2 class="heading" data-id="heading-2">你会学到什么？</h2>
+<ul>
+<li>理解使用 npm script 的关键知识要点；</li>
+<li>掌握 25 个 npm script 实战技巧，章节虽少，但是每个章节都是浓缩的；</li>
+<li>收获使用 npm script 和各种小工具搞定各种前端工程自动化需求；</li>
+<li>得到我长期积累和迭代出来的 npm script 集合，直接运用到项目中；</li>
+</ul>
+<h2 class="heading" data-id="heading-3">你要准备什么？</h2>
+<ul>
+<li><a target="_blank" href="http://nodejs.org" rel="nofollow noopener noreferrer">Node.js</a> 运行环境，最好是 v8.x 以上版本，建议使用 <a target="_blank" href="https://github.com/creationix/nvm" rel="nofollow noopener noreferrer">nvm</a> 来安装，Windows 下的用户可以使用 <a target="_blank" href="https://github.com/coreybutler/nvm-windows" rel="nofollow noopener noreferrer">nvm-windows</a>；</li>
+<li>可以用来输入和执行命令的终端程序，比如 Mac 下的 <a target="_blank" href="http://www.iterm2.com/index.html" rel="nofollow noopener noreferrer">iTerm</a>，或者 Windows 下的 cmd；</li>
+<li>1 小时的闲暇时间，读完这本小册，并能自己上手实践，因为纸上得来终觉浅；</li>
+</ul>
+<h2 class="heading" data-id="heading-4">视频目录如何？</h2>
+<p></p><figure><img class="lazyload inited" data-src="https://user-gold-cdn.xitu.io/2018/1/2/160b46e75b644bf5?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="1162" data-height="1280" src="data:image/svg+xml;utf8,&lt;?xml version=&quot;1.0&quot;?&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; width=&quot;1162&quot; height=&quot;1280&quot;&gt;&lt;/svg&gt;"><figcaption></figcaption></figure><p></p>
+<h2 class="heading" data-id="heading-5">关于作者</h2>
+<p>王仕军，爱折腾、爱分享的前端老司机，6 年以上前端开发经验，4 年大型互联网公司工作经验；<a target="_blank" href="https://juejin.im/user/57a7f634d342d300576b738d" rel="">掘金专栏作者</a>；熟知（是的，到现在我还不敢说精通） <code>Javascript</code>、<code>Node.js</code>，对开发效率和软件质量有极致追求。目标是 <strong><code>Be a Power User of Everything</code></strong>。</p>
+<h2 class="heading" data-id="heading-6">读者福利</h2>
+<ul>
+<li>免费加入读者交流群，和群友讨论和交流读书心得和疑惑问题；</li>
+<li>免费获得小册视频版教程，网盘下载地址已经附在小册末尾；</li>
+</ul>
+<h2 class="heading" data-id="heading-7">购买须知</h2>
+<ol>
+<li>本小册为图文形式内容服务，共计 15 节，上线时间为 2017 年 11 月 22 日；</li>
+<li>购买用户可享有小册永久的阅读权限；</li>
+<li>购买用户可进入小册微信群，与作者互动；</li>
+<li>掘金小册为虚拟内容服务，一经购买成功概不退款；</li>
+<li>掘金小册版权归北京北比信息技术有限公司所有，任何机构、媒体、网站或个人未经本网协议授权不得转载、链接、转贴或以其他方式复制发布/发表，违者将依法追究责任；</li>
+<li>在掘金小册阅读过程中，如有任何问题，请邮件联系 <a target="_blank" href="mailto:xiaoce@xitu.io" rel="nofollow noopener noreferrer">xiaoce@xitu.io</a>。</li>
+</ol>
+<h2 class="heading" data-id="heading-8">更新日志</h2>
+<ol>
+<li>2017-11-20 完成小册简介、为什么选 npm script、hello npm script 3 部分内容；</li>
+<li>2017-11-24 修订小册第 1.1 节（<strong>试读部分</strong>），<strong>大量新增内容</strong>，如给新老项目配置 eslint 的方法；</li>
+<li>2017-11-25 增加小册更新进度表，增加小册更新日志部分；</li>
+<li>2017-11-25 完成小册第 1.2 节：运行多个 npm script 的各种姿势；</li>
+<li>2017-11-27 完成小册第 1.3 节：给 npm script 传递参数、添加注释以及控制输出；</li>
+<li>2017-11-29 完成小册第 2.1 节：使用 pre、post 钩子把自动化任务串起来；</li>
+<li>2017-12-01 完成小册第 2.2 节：使用自定义变量改进测试覆盖率归档过程；</li>
+<li>2017-12-03 完成小册第 2.3 节：实现 npm 命令自动补全；</li>
+<li>2017-12-05 完成小册第 3.1 节：实现 npm script 的跨平台兼容；</li>
+<li>2017-12-07 完成小册第 3.2 节：用 scripty 隔离 npm script 的复杂性；</li>
+<li>2017-12-10 完成小册第 3.3 节：用 Node.js 脚本替代复杂的 npm script；</li>
+<li>2017-12-12 完成小册第 4.1 节：在文件变化时执行 npm script；</li>
+<li>2017-12-14 完成小册第 4.2 节：结合 livereload 实现自动刷新；</li>
+<li>2017-12-14 完成小册第 4.3 节：在 git hooks 中执行 npm script；</li>
+<li>2017-12-18 完成小吃第 4.4 节：用 npm script 实现构建流水线；</li>
+<li>2017-12-18 完成小册第 4.5 节：用 npm script 进行服务运维，至此小册文字版完稿；</li>
+<li>2018-01-02 完成小册视频版录制。</li>
+</ol>

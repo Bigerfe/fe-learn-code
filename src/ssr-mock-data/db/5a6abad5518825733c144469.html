@@ -1,0 +1,60 @@
+<h2 class="heading" data-id="heading-0">小册介绍</h2>
+<p></p><figure><img alt="缤纷多彩的前端世界" class="lazyload inited" data-src="https://user-gold-cdn.xitu.io/2018/2/12/16187fcb2825ed0a?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="1280" data-height="746" src="data:image/svg+xml;utf8,&lt;?xml version=&quot;1.0&quot;?&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; width=&quot;1280&quot; height=&quot;746&quot;&gt;&lt;/svg&gt;"><figcaption></figcaption></figure><p></p>
+<p>随着互联网大潮的兴起，web 项目复杂度上升，前端社区蓬勃发展，前端构建已经是开发工作中一个绕不开的话题。上图罗列了前端的很多东西，除了一些类库，其他基本都和构建有一定的关系。</p>
+<p>在前端旧时代，JavaScript 本身就缺乏模块化相关规范的支持，而现今也并非所有浏览器都支持新的 JavaScript Module，所以在前端构建中，代码模块打包几乎就是最重要的一部分。</p>
+<p></p><figure><img alt="Popular degree of module bundler" class="lazyload inited" data-src="https://user-gold-cdn.xitu.io/2018/2/12/16187fd1333d7c07?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="1280" data-height="374" src="data:image/svg+xml;utf8,&lt;?xml version=&quot;1.0&quot;?&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; width=&quot;1280&quot; height=&quot;374&quot;&gt;&lt;/svg&gt;"><figcaption></figcaption></figure><p></p>
+<p>上图简单地比较了当前前端社区比较流行的四个模块打包工具 —— <a target="_blank" href="https://github.com/webpack/webpack" rel="nofollow noopener noreferrer">webpack</a>、<a target="_blank" href="https://github.com/browserify/browserify" rel="nofollow noopener noreferrer">browserify</a>、<a target="_blank" href="https://github.com/rollup/rollup" rel="nofollow noopener noreferrer">rollup</a>、<a target="_blank" href="https://github.com/parcel-bundler/parcel" rel="nofollow noopener noreferrer">parcel-bundler</a> 2018 年 1 月 npm 包下载量和 GitHub stars 数量，很明显，webpack 可以说是最为人所知，使用量最大的一个。</p>
+<p></p><figure><img alt="Contributions" class="lazyload inited" data-src="https://user-gold-cdn.xitu.io/2018/2/12/16187fc263333536?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="1280" data-height="508" src="data:image/svg+xml;utf8,&lt;?xml version=&quot;1.0&quot;?&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; width=&quot;1280&quot; height=&quot;508&quot;&gt;&lt;/svg&gt;"><figcaption></figcaption></figure><p></p>
+<p>从 GitHub 的 webpack 代码仓库的 master 贡献图来看，webpack 从 2012 年开始，主代码仓库都相当活跃，尤其是 2017 年，更是有了巨大的变化。</p>
+<p>期间，webpack 经历了几个主要版本变更，从开始火热的 1.x 版本，经过了 2.x，3.x，走到了现在还在成长中的 4.x 版本，webpack 在不断地完善中。整个 webpack 社区一直是相当活跃的，周边相关的插件等基本覆盖了前端日常开发工作所需，随时代发展，也添加了不少新特性，如 tree-shaking 等。</p>
+<p>至今，webpack 已经成为家喻户晓的前端打包工具，是当前可以使用的前端代码模块打包工具中最具代表性的一个。</p>
+<p></p><figure><img alt="webpack as a bundler" class="lazyload inited" data-src="https://user-gold-cdn.xitu.io/2018/1/26/16130f39908db72f?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="1280" data-height="505" src="data:image/svg+xml;utf8,&lt;?xml version=&quot;1.0&quot;?&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; width=&quot;1280&quot; height=&quot;505&quot;&gt;&lt;/svg&gt;"><figcaption></figcaption></figure><p></p>
+<p>使用过 webpack 的都了解，webpack 本身具备了诸多优点：从单一入口出发，打包所有前端资源，使用 loader 处理多种代码语言的转换，使用 plugin 扩展原有的模块打包流程，使用 HMR 提升开发体验，利用代码压缩和代码分割来提升前端加载性能等。</p>
+<p>我们可以发现，在大多数项目中，webpack 已经可以成为构建工作的主心骨，应该具备的功能都已经具备，对 webpack 的了解几乎成了前端开发人员必不可少的技能之一。</p>
+<p>但是一直以来，webpack 文档说明为人所诟病，由于 webpack 本身功能就具备一定的复杂性和自由度，文档总是难以面面俱到（3.x 版本已经改善了相当多，4.x 的文档还在努力准备中），部分细节没有深入，也比较少去讲述 webpack 面向具体构建需求时的使用。同时，webpack 源码的可读性一般，开发者遇见问题时难以开发调试，普遍停留在 webpack 的基础使用上，不敢大刀阔斧地用来定制舒服的开发流程。</p>
+<p>我们可以在社区中找到很多关于 webpack 的文章，有不少相当实用的，可以帮助新手快速入门 webpack，也有不少相当深入的，可以从某一层面剖析如何更好地使用 webpack，但总归是零零散散，缺乏一个相对系统化的 webpack 学习指南。</p>
+<p></p><figure><img class="lazyload inited" data-src="https://user-gold-cdn.xitu.io/2018/3/27/1626803c172f0121?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="1280" data-height="487" src="data:image/svg+xml;utf8,&lt;?xml version=&quot;1.0&quot;?&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; width=&quot;1280&quot; height=&quot;487&quot;&gt;&lt;/svg&gt;"><figcaption></figcaption></figure><p></p>
+<p>我希望将我使用 webpack 的经验总结一下，来完成这么一份系统化的学习指南，来帮助更多开发者熟悉了解 webpack，更好地利用 webpack，为自己，为团队，随心所欲地定制前端开发环境。于是，便诞生了这样一本小册，希望能够对你的前端之路有所帮助。</p>
+<h2 class="heading" data-id="heading-1">作者介绍</h2>
+<p></p><figure><img class="lazyload inited" data-src="https://user-gold-cdn.xitu.io/2018/3/27/16268044f081c175?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="1280" data-height="365" src="data:image/svg+xml;utf8,&lt;?xml version=&quot;1.0&quot;?&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; width=&quot;1280&quot; height=&quot;365&quot;&gt;&lt;/svg&gt;"><figcaption></figcaption></figure><p></p>
+<p><a target="_blank" href="https://github.com/teabyii" rel="nofollow noopener noreferrer">teabyii</a>，《Node.js硬实战：115个核心技巧》译者之一，前支付宝前端工程师，现唯品会高级开发工程师，曾负责多个前端系统的基础构建服务，热爱 JavaScript，喜爱折腾开发工具，致力于提高前端开发效率，正努力走在成为优秀的开发工程师的路上。</p>
+<h2 class="heading" data-id="heading-2">名人推荐</h2>
+<p></p><figure><img class="lazyload inited" data-src="https://user-gold-cdn.xitu.io/2018/3/27/16268067ca3e499d?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="1280" data-height="688" src="data:image/svg+xml;utf8,&lt;?xml version=&quot;1.0&quot;?&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; width=&quot;1280&quot; height=&quot;688&quot;&gt;&lt;/svg&gt;"><figcaption></figcaption></figure><p></p>
+<p></p><figure><img class="lazyload inited" data-src="https://user-gold-cdn.xitu.io/2018/3/27/1626806a46bb0a86?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="1280" data-height="460" src="data:image/svg+xml;utf8,&lt;?xml version=&quot;1.0&quot;?&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; width=&quot;1280&quot; height=&quot;460&quot;&gt;&lt;/svg&gt;"><figcaption></figcaption></figure><p></p>
+<h2 class="heading" data-id="heading-3">你会学到什么？</h2>
+<ul>
+<li>前端构建的基本知识</li>
+<li>webpack 的基本使用</li>
+<li>使用 webpack 定制前端开发环境</li>
+<li>使用 webpack 优化前端资源的加载</li>
+<li>开发 webpack 的 loader 和 plugin</li>
+<li>了解 webpack 内部基本的工作流程</li>
+<li>结合实际项目使用 webpack 的经验</li>
+</ul>
+<p>希望你在学完整个小册后，可以做到：</p>
+<ul>
+<li>了解前端构建，了解构建需求的原因和由来</li>
+<li>原有的 webpack 构建出问题了，我可以迅速定位解决问题</li>
+<li>项目构建中需要 xxx，我可以简单调整 webpack 的配置来搞定</li>
+<li>项目构建流程中需要 xxx，我可以写个 webpack plugin 来实现</li>
+<li>新项目中，我可以自由根据需要使用 webpack 来规范前端构建</li>
+</ul>
+<h2 class="heading" data-id="heading-4">适宜人群</h2>
+<ul>
+<li>具备 HTML、CSS、JavaScript、Node.js 一定基础知识的开发人员</li>
+<li>希望掌握构建知识，提高工程化能力的前端开发者</li>
+</ul>
+<h2 class="heading" data-id="heading-5">温馨提示</h2>
+<ul>
+<li>建议使用 Node 8.x 以上版本</li>
+<li>所有配置和 demo 基于 webpack 4.1.1 版本，理论上 4.x 都支持，特殊说明的除外</li>
+</ul>
+<h2 class="heading" data-id="heading-6">购买须知</h2>
+<ol>
+<li>本小册为图文形式内容服务，共计 16 节，上线时间为 2018 年 3 月 28 日；</li>
+<li>购买用户可享有小册永久的阅读权限；</li>
+<li>购买用户可进入小册微信群，与作者互动；</li>
+<li>掘金小册为虚拟内容服务，一经购买成功概不退款；</li>
+<li>掘金小册版权归北京北比信息技术有限公司所有，任何机构、媒体、网站或个人未经本网协议授权不得转载、链接、转贴或以其他方式复制发布/发表，违者将依法追究责任；</li>
+<li>在掘金小册阅读过程中，如有任何问题，请邮件联系 <a target="_blank" href="mailto:xiaoce@xitu.io" rel="nofollow noopener noreferrer">xiaoce@xitu.io</a></li>
+</ol>

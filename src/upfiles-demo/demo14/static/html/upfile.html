@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>大文件上传-优化版</title>
+    <style type="text/css">
+    #progress{
+        height:20px;
+        width: 300px;
+        margin-bottom: 30px;
+    }
+    #progress span{
+        display: block;
+        height:20px;
+        width:0;
+        color: #fff;
+        font-size: 12px;
+    }
+
+    .red{
+        background-color: red;
+    }
+
+    .green{
+        background-color: green;
+    }
+    </style>
+</head>
+<body>
+    <h1>大文文件分片上传  之 断点续传</h1>
+    <p>
+      1. 为文件生成一个 hash 值，标识这个文件<br/>
+      2. js 将文件进行分段 按照2m 分<br/>
+      3. 上传文件前，在服务器获取到当前文件的已上分段信息。<br/>
+      4. 上传过程中进行和本地对比分段信息，只传未上传的分段。<br/>
+      5. 服务端保存分段信息和文件顺序。<br/>
+      6. 分段上传完成，客户端发送合并文件的请求
+
+    </p>
+    <div>
+
+        选择文件:
+            <input type="file" id="f1"/><br/><br/>
+
+            <div id="progress">
+                <span class="red"></span>
+            </div>
+
+        <button type="button" id="btn-submit">上 传</button>
+
+    </div>
+</body>
+</html>
+<script>
+
+    var saveChunkKey = 'chunkuploadedObj';//定义 key
+
+
+    //思路概括
+    function submitUpload() {
+
+        var chunkSize=2*1024*1024;//2m
+        var progressSpan = document.getElementById('progress').firstElementChild;
+        var file = document.getElementById('f1').files[0];
+        var chunks=[],
+         token = 1570615258206,//模拟 token
+         name =file.name,chunkCount=0,sendChunkCount=0;
+
+        progressSpan.style.width='0';
+        progressSpan.classList.remove('green');
+
+        if(!file){
+            alert('请选择文件');
+            return;
+        }
+
+        //拆分文件
+        if(file.size>chunkSize){
+            //拆分文件
+            var start=0,end=0;
+            while (true) {
+                end+=chunkSize;
+                var blob = file.slice(start,end);
+                console.log()
+                start+=chunkSize;
+
+                if(!blob.size){
+                    //拆分结束
+                    break;
+                }
+
+                chunks.push(blob);
+            }
+        }else{
+            chunks.push(file.slice(0));
+        }
+
+        console.log(chunks);
+
+        chunkCount=chunks.length;
+        
+        var uploadedInfo = getUploadedFromStorage();
+
+        //没有做并发限制，较大文件导致并发过多，tcp 链接被占光 ，需要做下并发控制，比如只有4个在请求在发送
+        for(var i=0;i< chunkCount;i++){
+            console.log('index',i, uploadedInfo[i]?'已上传过':'未上传');
+            if(uploadedInfo[i]){
+                sendChunkCount=i+1;//记录已上传的索引
+                continue;//如果已上传则跳过
+            }
+            var fd = new FormData();   //构造FormData对象
+            fd.append('token', token);
+            fd.append('f1', chunks[i]);
+            fd.append('index', i);
+            (function (index) {
+                    xhrSend(fd, function () {
+                    sendChunkCount += 1;
+                    //将成功信息保存到本地
+                        console.log('sendChunkCount', sendChunkCount);
+                    setUploadedToStorage(index);
+
+                    if (sendChunkCount === chunkCount) {
+                        console.log('上传完成，发送合并请求');
+
+                        var formD = new FormData();
+                        formD.append('type', 'merge');
+                        formD.append('token', token);
+                        formD.append('chunkCount', chunkCount);
+                        formD.append('filename', name);
+                        xhrSend(formD);
+                    }
+                });
+            })(i);
+        
+        }
+    }
+
+
+    //获得本地缓存的数据
+    function getUploadedFromStorage(){
+        return JSON.parse( localStorage.getItem(saveChunkKey) || "{}");
+    }
+
+    //写入缓存
+    function setUploadedToStorage(index) {
+        var obj =  getUploadedFromStorage();
+        obj[index]=true;      
+        localStorage.setItem(saveChunkKey, JSON.stringify(obj) );
+    }
+
+    function xhrSend(fd,cb) {
+        
+        var xhr = new XMLHttpRequest();   //创建对象
+        xhr.open('POST', 'http://localhost:8100/', true);
+
+        xhr.onreadystatechange = function () {
+            console.log('state change', xhr.readyState);
+            if (xhr.readyState == 4 && xhr.responseText.length>10) {//注意 中断请求后readyState会立即变为4,所有存储都
+                  console.log('xhr.responseText');
+                console.log(xhr.responseText);
+                cb && cb();
+            }
+        }
+
+        //注意 send 一定要写在最下面，否则 onprogress 只会执行最后一次 也就是100%的时候
+        xhr.send(fd);//发送时  Content-Type默认就是: multipart/form-data; 
+    }
+
+    //绑定提交事件
+    document.getElementById('btn-submit').addEventListener('click',submitUpload);
+
+
+
+</script>

@@ -1,0 +1,71 @@
+<h2 class="heading" data-id="heading-0">重制说明</h2>
+<p>转眼里这本小册发行已接近一年，Laravel 也从 5.5 版本迭代到了 5.7 版本，一直萌生重写这本小册的想法，现在已经是实施的时候了。现在都流行重制，帝国二、魔兽三的重制版都在近期发售了，所以我也借来这个概念，编写一个这本小册的重制版。</p>
+<p>在重制版本中，我将从以下方面对小册的内容进行更新：</p>
+<ol>
+<li>所有 Laravel 的示例更新至 5.7 版本；</li>
+<li>增加更多设计模式和其在 Laravel 中的体现；</li>
+<li>丰富文字和图片内容，更详尽的展现每种设计模式。</li>
+</ol>
+<p>除了内容，大家比较关心的应该是重制版的收费了。很高兴告诉大家，由于小册仍然是这一本，我只是在此之上增加、调整内容，所以已经购买过这本小册的读者，可以直接阅读重制版，并不需要额外付费。</p>
+<p>另外，在重制版编写的过程中，我会直接把编写好的章节直接更新到小册中，所以新老篇章是共存的。在这段时间中，读者阅读小册可能会产生前后断章的感觉，望请见谅。</p>
+<p>有明<br>
+2018.11.12</p>
+<h2 class="heading" data-id="heading-1">小册简介</h2>
+<p><a target="_blank" href="https://laravel.com/" rel="nofollow noopener noreferrer">Laravel</a> 是个致力于为开发者创造愉悦、舒适开发体验的 PHP Web 框架。
+Laravel 最大的优势，是做好了足够的准备，能够让使用者摆脱开发过程中对基础设施的关心，使用简洁、优雅的代码，专注于需要实现的功能。</p>
+<p>正如 Laravel 对自己的介绍：</p>
+<blockquote>
+<p>The PHP Framework For Web Artisans</p>
+</blockquote>
+<p>Laravel 希望使用它的开发者，将代码视为艺术品，全身心投入到艺术创作中去。</p>
+<p></p><figure><img alt="Laravel 5.5" class="lazyload inited" data-src="https://user-gold-cdn.xitu.io/2017/12/7/1602f5c9efcfbce4?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="1280" data-height="648" src="data:image/svg+xml;utf8,&lt;?xml version=&quot;1.0&quot;?&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; width=&quot;1280&quot; height=&quot;648&quot;&gt;&lt;/svg&gt;"><figcaption></figcaption></figure><p></p>
+<p>从 Google 趋势对近五年来热门的几个 PHP Web 框架分析来看，Laravel 的关注度莫不能说是令其它前辈都难以望其项背的。</p>
+<p></p><figure><img alt="热门 PHP 框架近五年的 Google 搜索趋势" class="lazyload inited" data-src="https://user-gold-cdn.xitu.io/2017/12/6/1602a040e41c6867?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="1161" data-height="401" src="data:image/svg+xml;utf8,&lt;?xml version=&quot;1.0&quot;?&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; width=&quot;1161&quot; height=&quot;401&quot;&gt;&lt;/svg&gt;"><figcaption></figcaption></figure><p></p>
+<p>与其他 PHP 框架不同，Laravel 是个站在巨人肩膀上的框架。
+它汲取了前辈框架，甚至其他语言框架的优秀思想，让自己拥有充实、丰满的功能。
+而借助于 Composer 和自身的容器体系，让其拥有了能够快速融入其他扩展的能力。</p>
+<p>Swoole 的作者韩天峰是这么评价 Laravel 的：</p>
+<p></p><figure><img alt="韩天峰的评价" class="lazyload inited" data-src="https://user-gold-cdn.xitu.io/2017/12/9/16039465fa2efc8f?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="598" data-height="164" src="data:image/svg+xml;utf8,&lt;?xml version=&quot;1.0&quot;?&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; width=&quot;598&quot; height=&quot;164&quot;&gt;&lt;/svg&gt;"><figcaption></figcaption></figure><p></p>
+<p>与 Laravel 所推崇的以艺术之心设计代码的理念相同，Laravel 框架本身，也是由精美绝伦的代码组成。
+其中的架构思想、设计模式、逻辑结构，乃至代码样式，都可称作是教科书式的典范。
+在这本小册中，我们就从 Laravel 框架代码中所使用到的主流设计模式入手，对它们进行归类并分别讲解。
+不仅希望通过这本小册，让大家了解 Laravel 中的设计模式和设计思想，进而更好的掌握 Laravel 的使用。
+更希望大家能够以 Laravel 为范本，升华自己对程序设计的理解，将这些思想应用到更广泛的设计和开发中去。</p>
+<p></p><figure><img class="lazyload inited" data-src="https://user-gold-cdn.xitu.io/2017/12/20/1606fedc734e42de?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="1280" data-height="487" src="data:image/svg+xml;utf8,&lt;?xml version=&quot;1.0&quot;?&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; width=&quot;1280&quot; height=&quot;487&quot;&gt;&lt;/svg&gt;"><figcaption></figcaption></figure><p></p>
+<h3 class="heading" data-id="heading-2">为什么这本小册你值得拥有？</h3>
+<p>我们知道，在国内，PHP 长期处于专业素养匮乏的状态，生态环境相对来说非常糟糕，而 PHP 也一直处于程序员鄙视链的一端。
+然而，我们知道，国内的百度、腾讯、360，国外的 Facebook、Yahoo、维基百科 等等，都在使用 PHP，甚至以 PHP 作为主力语言。
+这就说明，PHP 并非真的一塌糊涂，PHP 是世界上最好的语言也绝非一句空话。</p>
+<p>相对于其他开发语言来说，国内的 PHP 领域一直缺乏较为完整的生态体系，也没有相对权威、全面的文档等资源支持，难以大范围的培养优秀的 PHP 开发者。
+并且，互联网上关于 PHP 的相关资源参差不齐，有的过于老旧，仍是面向过程的开发结构，非常容易使初学者陷入泥潭和误区。
+然而放眼世界来说，PHP 领域早就不是以往草根的形象，在 PHP 领域早已出现了很多优秀的框架、设计、规范等等。</p>
+<p></p><figure><img alt="设计模式" class="lazyload inited" data-src="https://user-gold-cdn.xitu.io/2017/12/20/16071ea64a631e71?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="1280" data-height="320" src="data:image/svg+xml;utf8,&lt;?xml version=&quot;1.0&quot;?&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; width=&quot;1280&quot; height=&quot;320&quot;&gt;&lt;/svg&gt;"><figcaption></figcaption></figure><p></p>
+<p>那么要成为一个合格的 PHP 开发者，除了良好的语言功底之外，一些编程领域的理论也是不可或缺，必须掌握的。
+设计模式作为其中一员，也是最为常见，使用范围非常广泛的理论体系之一，自然是少不了的一门学问。
+这本小册结合了当下最流行的 PHP 框架，通过深入剖析代码，结合理论讲解的形式，希望给广大开发者，特别是对这些领域知识掌握比较薄弱的 PHP 开发者，提供参考。</p>
+<p>另外，这本小册与其他关于设计模式的书籍、教程有很大的不同。
+在其他关于设计模式的书籍、教程里，通常只是通过片段式的代码，配合复杂、抽象的概念进行说明。
+这种形式不但很难让开发者理解设计模式的理论概念，也属于纸上谈兵，没有让开发者掌握实战使用时选择和实现的道理。
+而在这本小册里，结合的是 Laravel 框架成熟且已经广泛应用和验证的代码作为范例，进行深入浅出的剖析和讲解。
+不但向大家展示 Laravel 框架代码设计的美学，也用真实的应用场景来承载设计模式的理论。
+让概念和实践结合，使理论不在枯燥乏味。</p>
+<p></p><figure><img class="lazyload inited" data-src="https://user-gold-cdn.xitu.io/2017/12/20/1606fee5490a8a67?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="1280" data-height="487" src="data:image/svg+xml;utf8,&lt;?xml version=&quot;1.0&quot;?&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; width=&quot;1280&quot; height=&quot;487&quot;&gt;&lt;/svg&gt;"><figcaption></figcaption></figure><p></p>
+<h3 class="heading" data-id="heading-3">你会学到什么？</h3>
+<ul>
+<li>设计模式的基础逻辑和概念</li>
+<li>十几种常见设计模式的分析和解读</li>
+<li>这些设计模式在 Laravel 中的使用案例</li>
+<li>如何合理把这些设计模式运用到真实业务场景中</li>
+</ul>
+<h2 class="heading" data-id="heading-4">作者介绍</h2>
+<p></p><figure><img class="lazyload inited" data-src="https://user-gold-cdn.xitu.io/2017/12/20/1607192e5c56d203?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" data-width="1280" data-height="365" src="data:image/svg+xml;utf8,&lt;?xml version=&quot;1.0&quot;?&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; version=&quot;1.1&quot; width=&quot;1280&quot; height=&quot;365&quot;&gt;&lt;/svg&gt;"><figcaption></figcaption></figure><p></p>
+<p>有明，长期关注新兴技术结合微服务化实现，对技术理论体系有所研究。熟知全栈开发、运维相关技术。多个开源框架开发、维护者，Docker 小型软件镜像库 Cogset 发起者。SF 认证讲师。著有 《没什么难的：Docker》。</p>
+<h2 class="heading" data-id="heading-5">购买须知</h2>
+<ol>
+<li>本小册为图文形式内容服务，共计 13 节，上线时间为 2017 年 12 月 20 日；</li>
+<li>购买用户可享有小册永久的阅读权限；</li>
+<li>购买用户可进入小册微信群，与作者互动；</li>
+<li>掘金小册为虚拟内容服务，一经购买成功概不退款；</li>
+<li>掘金小册版权归北京北比信息技术有限公司所有，任何机构、媒体、网站或个人未经本网协议授权不得转载、链接、转贴或以其他方式复制发布/发表，违者将依法追究责任；</li>
+<li>在掘金小册阅读过程中，如有任何问题，请邮件联系 <a target="_blank" href="mailto:xiaoce@xitu.io" rel="nofollow noopener noreferrer">xiaoce@xitu.io</a></li>
+</ol>

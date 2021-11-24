@@ -1,0 +1,49 @@
+Arguments: 
+  /Users/zz_jesse/.nvm/versions/node/v12.16.3/bin/node /Users/zz_jesse/.nvm/versions/node/v12.16.3/bin/yarn
+
+PATH: 
+  /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/Users/zz_jesse/.nvm/versions/node/v12.16.3/bin
+
+Yarn version: 
+  1.22.4
+
+Node version: 
+  12.16.3
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: connect ECONNREFUSED 0.0.0.0:443
+      at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1141:16)
+
+npm manifest: 
+  {
+      "name": "fe-learn-code",
+      "version": "1.0.0",
+      "description": "前端学习路上的代码实例",
+      "main": "ls",
+      "scripts": {
+          "test": "echo \"Error: no test specified\" && exit 1"
+      },
+      "author": "223344386",
+      "license": "ISC",
+      "dependencies": {
+          "fluent-ffmpeg": "^2.1.2",
+          "koa": "^2.8.2",
+          "koa-better-body": "^3.1.2",
+          "koa-body": "^4.1.1",
+          "koa-bodyparser": "^4.2.1",
+          "koa-convert": "^1.2.0",
+          "koa-json": "^2.0.2",
+          "koa-static": "^5.0.0",
+          "koa2": "^2.0.0-alpha.7",
+          "spark-md5": "^3.0.0"
+      }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
